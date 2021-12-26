@@ -7,7 +7,7 @@ export default function NewsSlider({ news }) {
 
     const [state, setState] = useState({
         activeItem: 0,
-        move: 0,
+        didMove: 0,
         triggerOnResize: false,
     })
 
@@ -24,12 +24,12 @@ export default function NewsSlider({ news }) {
      *
      * index value will vary from 0 to infinite
      *
-     * The use of this.state.move is to track if the function had run on the first item or not
+     * The use of this.state.didMove is to track if the function had run on the first item or not
      * */
     const onNext = (index) => {
         let activeIndex = (index) % news.length
 
-        if (state.move) {
+        if (state.didMove) {
             setState(prevState => ({
                 ...prevState,
                 activeIndex: activeIndex + 1,
@@ -37,12 +37,12 @@ export default function NewsSlider({ news }) {
         } else {
             setState(prevState => ({
                 ...prevState,
-                move: true,
+                didMove: true,
             }))
         }
     }
 
-    const { activeIndex, move } = state
+    const { activeIndex, didMove } = state
 
     /*
      * This block is to get the active new available on the view
@@ -52,9 +52,7 @@ export default function NewsSlider({ news }) {
     let activeNew = undefined
     if (news.length > 0) {
         activeNew = news[0]
-        const body = document.querySelector('body.rtl')
-        const isRTL = body !== null
-        if (activeIndex !== undefined && move) {
+        if (activeIndex !== undefined && didMove) {
             activeNew = news[state.activeIndex % news.length]
         }
 
@@ -91,7 +89,7 @@ export default function NewsSlider({ news }) {
                         speed={8}
                         onNext={onNext}
                         triggerOnResize={news.length > 0}
-                        direction={isRTL ? 'toRight' : 'toLeft'}
+                        direction={'toLeft'}
                     >
                         {(item) => {
                             const { id, content } = news[(item.index) % news.length]
