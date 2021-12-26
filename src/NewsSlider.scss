@@ -14,7 +14,6 @@
     @media screen and (min-width: 676px) {
       grid-template-columns: auto 1fr;
       grid-template-areas: "info content";
-      grid-gap: 1em;
     }
     align-items: start;
     &__info {
@@ -51,7 +50,7 @@
 
     &__content {
       grid-area: content;
-      padding: 0 10px;
+      padding: 0 5px;
       white-space: nowrap;
     }
 
