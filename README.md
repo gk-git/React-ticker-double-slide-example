@@ -2,6 +2,8 @@
 
 This project is for demonstration on how the react-ticker ticker component can be used to achieve two synchronized slider
 
+The Demo is available here [react-ticker-double-slide-example.netlify.app](https://react-ticker-double-slide-example.netlify.app)
+
 ## Available Scripts
 
 In the project directory, you can run:
